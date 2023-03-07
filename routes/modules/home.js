@@ -23,10 +23,17 @@ router.post('/', (req, res) => {
 })
 
 router.get('/:shortURL', (req, res) => {
-  const shortURL = req.params
+  const shortURL = req.params.shortURL
   
-  URL.findOne(shortURL)
-    .then(data => res.redirect(data.originalURL))
+  URL.findOne({ shortURL })
+    .then(data => {
+      if (!data)
+        return res.render('error', {
+          errorURL: `${req.headers.host}/${shortURL}`
+        })
+
+      res.redirect(data.originalURL)
+    })
     .catch(error => console.log(error))
 })
 
