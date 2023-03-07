@@ -2,10 +2,22 @@
   <div class="container">
     <h2>Success! Please use this link:</h2>
     <a href="/{{ shortURL }}">
-      <h4>http://localhost:3000/{{ shortURL }}</h4>
+      <h4 id="text">http://localhost:3000/{{ shortURL }}</h4>
     </a>
   </div>
-  <button class="btn btn-primary m-3">Copy</button>
+  <button class="btn btn-primary m-3" id="copy-btn">Copy</button>
+
+  <script>
+    const copyBtn = document.querySelector('#copy-btn')
+    const text = document.querySelector('#text')
+
+    copyBtn.addEventListener('click', function onCopyClicked () {
+      navigator.clipboard.writeText(text.innerText)
+        .then(() => alert('Copy successfully!'))
+        .catch(error => console.log(error))
+    })
+  </script>
+
 {{else}}
   <form action="/" method="POST">
     <div class="container">
