@@ -1,5 +1,5 @@
 # URL shortener 短網址產生器
-[URL shortener image](/public/image/URL_shortener.png)
+![URL shortener image](/public/image/URL_shortener.png)
 
 ## 介紹
 將原本冗長的網址化為簡短的網址
